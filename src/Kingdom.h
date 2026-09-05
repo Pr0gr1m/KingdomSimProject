@@ -3,6 +3,7 @@
 #include <cstddef>
 #include <iostream>
 #include <map>
+#include <fmt/core.h>
 
 #include "Individual.h"
 #include "Strike.h"

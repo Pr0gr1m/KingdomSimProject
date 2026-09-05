@@ -2,6 +2,7 @@
 #include <random>
 #include <algorithm>
 #include <cmath>
+#include <fmt/core.h>
 
 #include "Individual.h"
 #include "Kingdom.h"

@@ -1,9 +1,19 @@
 cmake_minimum_required(VERSION 4.2)
-project(KingdomSimProject)
+
+include("${CMAKE_CURRENT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+#if(WIN32 AND NOT MSVC)
+#    set(VCPKG_TARGET_TRIPLET "x64-mingw-static" CACHE STRING "Vcpkg target triplet" FORCE)
+#endif()
+
+set(ProjectName "KingdomSimProject")
+project(${ProjectName})
 
 set(CMAKE_CXX_STANDARD 26)
 
-add_executable(KingdomSimProject src/main.cpp
+find_package(fmt CONFIG REQUIRED)
+
+add_executable(${ProjectName} src/main.cpp
         src/JobType.cpp
         src/JobType.h
         src/Individual.cpp
@@ -15,3 +25,5 @@ add_executable(KingdomSimProject src/main.cpp
         src/SocialClass.cpp
         src/SocialClass.h
         src/Race.h)
+
+target_link_libraries(${ProjectName} PRIVATE fmt::fmt)
