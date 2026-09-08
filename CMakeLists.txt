@@ -24,6 +24,9 @@ add_executable(${ProjectName} src/main.cpp
         src/Strike.h
         src/SocialClass.cpp
         src/SocialClass.h
-        src/Race.h)
+        src/Race.h
+        EnumToString.cpp
+        EnumToString.h
+        EnumToString.h)
 
 target_link_libraries(${ProjectName} PRIVATE fmt::fmt)

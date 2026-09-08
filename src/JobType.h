@@ -1,7 +1,7 @@
 #pragma once
 #include <cstddef>
 
-static constexpr int numJobs = 6;
+inline constexpr int numJobs = 6;
 
 struct JobType {
     enum Jobs {
@@ -19,11 +19,13 @@ struct JobType {
     ///On scale of 0-100, percentage of income taken to the king
     std::byte taxationLevel{};
 
+    double productsPerTick{0};
+
     ///E.g production cost MONTHLY. This is default price it should be calculated in ticks (f.e by average)
     double defaultPrice;
 
     JobType() = default;
 
-    JobType(Jobs jobs, bool offersProducts, int taxationLevel, double defaultPrice) : job(jobs), jobOffersProducts(offersProducts), taxationLevel(std::byte(taxationLevel)), defaultPrice(defaultPrice) {}
+    JobType(Jobs jobs, bool offersProducts, int taxationLevel, double productsPerTick, double defaultPrice) : job(jobs), jobOffersProducts(offersProducts), taxationLevel(std::byte(taxationLevel)), defaultPrice(defaultPrice), productsPerTick(productsPerTick) {}
 
 };

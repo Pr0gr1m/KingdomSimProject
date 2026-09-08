@@ -6,18 +6,30 @@
 #include "Race.h"
 #include "SocialClass.h"
 
+enum IndividualAction {
+    Work, Eat, Drink, Rest //Work default state unless its work hours
+};
+
 ///Class representing an individual
 class Individual {
 //private:
     //std::byte lifeSatisfaction{}; ///On scale of 0-100. Here, life satisfaction comes from having all needs met (hunger,thirst are 0)
 public:
-    Race race{}; ///Race of the individual
-    int IdentificationNumber{}; ///Alternative to names
-    std::byte age;
+    ///Race of the individual
+    Race race{};
 
-    std::byte closenessToKing{0}; ///On scale of 0-100, higher scale means f.e more food and privelages
-    std::byte currentHunger{100}, currentThirst{100}; ///On scale of 0-100. Starting at 100, decreases by an amount hourly
-    std::byte temper{}; ///On scale of 0-100. Threshold of life satisfaction until individual starts locally supporting ongoing strikes
+    ///Alternative to names
+    int IdentificationNumber{};
+    std::byte age{};
+
+    ///On scale of 0-100, higher scale means f.e more food and privelages.
+    std::byte closenessToKing{0};
+
+    ///On scale of 0-100. Starting at 100, decreases by an amount hourly
+    std::byte currentHunger{100}, currentThirst{100};
+
+    ///On scale of 0-100. Threshold of life satisfaction until individual starts locally supporting ongoing strikes
+    std::byte temper{};
     std::byte eagernessToFight{}; ///On scale of 0-100. Threshold of life satisfaction until individual starts participating in strikes
     std::byte approvalOfKing{}; ///On scale of 0-100 Approval of king.
 
@@ -30,6 +42,12 @@ public:
     double jobNetIncome{};
     double worth{};
 
+    int totalProductsInStored;
+    double nextProductProgress;
+
+    ///0-100 range. Decreased when working, increased when resting
+    double energy{};
+
     ///Does not work for f.e peacekeepers or king, selling price of the product
     double jobPricePerProduct{};
 
@@ -38,6 +56,8 @@ public:
 
     ///On scale of 0-100. Individual is more eager to fight on side of their own social class
     std::byte closenessToClosestSocialClass{};
+
+    IndividualAction nextAction{Rest};
 
     Individual() = default;
 
@@ -54,5 +74,11 @@ public:
         this->worth = startingWorth;
     }
 
-    int GetLifeSatisfaction();
+    [[nodiscard]] int GetLifeSatisfaction() const;
+
+    void DecreaseStatsOnTick();
+
+    void PerformSelectedAction();
+
+    void DecideNextAction();
 };
