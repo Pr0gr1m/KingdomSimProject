@@ -1,0 +1,20 @@
+{
+  "C:/Program Files/JetBrains/CLion 2026.1/bin/mingw/bin/g++.exe" : 
+  {
+    "hash" : "0d6830ab1f32260d779506596c7ec1c9d58b5e22",
+    "size" : 3732368,
+    "timestamp" : 1774397360
+  },
+  "C:/Program Files/JetBrains/CLion 2026.1/bin/mingw/bin/gcc.exe" : 
+  {
+    "hash" : "77fa64383203f52ebd80fbbfa3a0a923ded064a9",
+    "size" : 3728568,
+    "timestamp" : 1774397360
+  },
+  "C:/Program Files/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.50.35717/bin/Hostx64/x64/cl.exe" : 
+  {
+    "hash" : "1321b0722e18ec6f0d82c6560ae3a674be98f030",
+    "size" : 682576,
+    "timestamp" : 1773042383
+  }
+}
